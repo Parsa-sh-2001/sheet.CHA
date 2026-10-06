@@ -1,0 +1,542 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Piano Sheets | Naser Cheshmazar Academy</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --background: #f7f9f7;
+            --surface: #ffffff;
+            --surface-hover: #f2f7f4;
+
+            --green: #2f7d5a;
+            --green-dark: #246346;
+            --green-light: #e8f3ed;
+
+            --text: #17201b;
+            --muted: #6f7a73;
+
+            --border: #dfe7e2;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* =========================
+           Header
+        ========================= */
+
+        header {
+            height: 72px;
+
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 9px;
+
+            background: var(--green-light);
+            color: var(--green);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 17px;
+        }
+
+        .academy {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           Main
+        ========================= */
+
+        main {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 55px auto;
+
+            flex: 1;
+        }
+
+        .hero {
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            letter-spacing: -0.8px;
+
+            margin-bottom: 9px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* =========================
+           Search
+        ========================= */
+
+        .search-wrapper {
+            margin-bottom: 38px;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search {
+            width: 100%;
+
+            padding: 15px 18px;
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            color: var(--text);
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        .search::placeholder {
+            color: #9aa39d;
+        }
+
+        .search:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px var(--green-light);
+        }
+
+        .search-button {
+            padding: 0 20px;
+
+            background: var(--green);
+            color: white;
+
+            border: none;
+            border-radius: 10px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .search-button:hover {
+            background: var(--green-dark);
+        }
+
+        /* =========================
+           Search Info
+        ========================= */
+
+        .search-info {
+            margin-bottom: 18px;
+
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .search-info strong {
+            color: var(--text);
+        }
+
+        /* =========================
+           Section Header
+        ========================= */
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+        }
+
+        .section-header h2 {
+            font-size: 20px;
+            letter-spacing: -0.2px;
+        }
+
+        .add-button {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: var(--green);
+            color: white;
+
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .add-button:hover {
+            background: var(--green-dark);
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           Sheet Cards
+        ========================= */
+
+        .sheets {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(240px, 1fr));
+
+            gap: 16px;
+        }
+
+        .sheet {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            padding: 21px;
+
+            transition: 0.2s;
+        }
+
+        .sheet:hover {
+            border-color: #c8d8ce;
+
+            box-shadow:
+                0 5px 18px rgba(35, 70, 50, 0.06);
+
+            transform: translateY(-2px);
+        }
+
+        .sheet-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: var(--green-light);
+            color: var(--green);
+
+            margin-bottom: 16px;
+
+            font-size: 18px;
+        }
+
+        .sheet h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .sheet p {
+            color: var(--muted);
+            font-size: 14px;
+
+            margin-bottom: 19px;
+        }
+
+        .view-button {
+            display: block;
+
+            width: 100%;
+
+            padding: 10px;
+
+            background: var(--green-light);
+            color: var(--green-dark);
+
+            border: none;
+            border-radius: 7px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            text-align: center;
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .view-button:hover {
+            background: #dcece3;
+        }
+
+        /* =========================
+           No Results
+        ========================= */
+
+        .no-results {
+            grid-column: 1 / -1;
+
+            padding: 45px 20px;
+
+            text-align: center;
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .no-results h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .no-results p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           Footer
+        ========================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+
+            background: var(--surface);
+
+            padding: 22px;
+
+            text-align: center;
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           Mobile
+        ========================= */
+
+        @media (max-width: 600px) {
+            header {
+                padding: 0 20px;
+            }
+
+            .academy {
+                display: none;
+            }
+
+            main {
+                width: calc(100% - 32px);
+                margin: 35px auto;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .section-header {
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .add-button {
+                white-space: nowrap;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-button {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <div class="logo-icon">♫</div>
+        <span>Piano Sheets</span>
+    </div>
+
+    <div class="academy">
+        Naser Cheshmazar Academy
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+        <h1>Your Piano Sheets</h1>
+
+        <p>
+            Store, find, and view your piano sheets in one place.
+        </p>
+    </section>
+
+
+    <div class="search-wrapper">
+
+        <form action="/" method="GET" class="search-form">
+
+            <input
+                class="search"
+                type="text"
+                name="q"
+                value="{{.Query}}"
+                placeholder="Search sheets..."
+            >
+
+            <button type="submit" class="search-button">
+                Search
+            </button>
+
+        </form>
+
+    </div>
+
+
+    {{if .Query}}
+
+        <div class="search-info">
+            Search results for:
+            <strong>{{.Query}}</strong>
+        </div>
+
+    {{end}}
+
+
+    <div class="section-header">
+
+        <h2>
+            {{if .Query}}
+                Search Results
+            {{else}}
+                Recently Added
+            {{end}}
+        </h2>
+
+        <a href="/add_sheet" class="add-button">
+            + Add Sheet
+        </a>
+
+    </div>
+
+
+    <div class="sheets">
+
+        {{if .Sheets}}
+
+            {{range .Sheets}}
+
+            <div class="sheet">
+
+                <div class="sheet-icon">
+                    ♫
+                </div>
+
+                <h3>{{.Name}}</h3>
+
+                <p>
+                    {{.Author}}
+                </p>
+
+                <a href="/{{.Path}}" class="view-button">
+                    View Sheet
+                </a>
+
+            </div>
+
+            {{end}}
+
+        {{else}}
+
+            <div class="no-results">
+
+                <h3>No sheets found</h3>
+
+                <p>
+                    Try searching for a different name or author.
+                </p>
+
+            </div>
+
+        {{end}}
+
+    </div>
+
+</main>
+
+
+<footer>
+    Made by Parsa Shirin for Naser Cheshmazar Academy — All Rights Reserved ™
+</footer>
+
+
+</body>
+</html>
